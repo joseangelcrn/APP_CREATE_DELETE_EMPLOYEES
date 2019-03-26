@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title><%= title %></title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+</head>
+
+<body>
+
+    <div class="container">
+        <form action="/add" method="POST">
+            <h1><%= title %></h1>
+
+            <legend>
+                Añadir Empleado
+            </legend>
+
+            <div class="form-group">
+                <input type="text" placeholder="DNI " class="form-control" name="dni">
+            </div>
+
+            <div class="form-group">
+                <input type="text" placeholder="Nombre " class="form-control" name="nombre">
+            </div>
+
+            <div class="form-group">
+                <input type="text" placeholder="Apel 1 " class="form-control" name="apel1">
+            </div>
+
+            <div class="form-group">
+                <input type="text" placeholder="Apel 2 " class="form-control" name="apel2">
+            </div>
+
+            <div class="form-group">
+                <input type="text" placeholder="Cargo " class="form-control" name="cargo">
+            </div>
+
+            <div class="form-group">
+                <input type="text" placeholder="Pais" class="form-control" name="pais">
+            </div>
+
+            <div class="form-group">
+                <input type="text" placeholder="Ciudad" class="form-control" name="ciudad">
+            </div>
+
+            <button class="btn btn-success">
+                Guardar
+            </button>
+
+        </form>
+
+        <hr>
+<!-- 
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <td>#</td>
+                    <td>DNI</td>
+                    <td>Nombre</td>
+                    <td>Apel 1</td>
+                    <td>Apel 2</td>
+                    <td>Cargo</td>
+                    <td>Pais</td>
+                    <td>Ciudad</td>
+                </tr>
+            </thead>
+            <tbody>
+                <%  for(var i = 0; i<=10 ; i++) { %>
+                <tr>
+                    <td> <%= i %></td>
+                    <td>Empleado DNI <%= i %></td>
+                    <td>Empleado Nombre <%= i %></td>
+                    <td>Empleado <%= i %></td>
+
+                </tr>
+
+                <% } %>
+            </tbody>
+        </table> -->
+
+        <div class="row">
+            <%  for(var i = 0; i< empleados.length ; i++) { %>
+            <div class="col-md-4">
+                <div class="card" style="margin:5%; box-shadow: 3px 3px 3px 3px">
+                    <div class="card-body">
+                        <h6 class="card-title"> <%= empleados[i].nombre %></h6>
+                        <hr style="box-shadow:3px 3px 9px 3px">
+                        <label><strong>DNI:</strong>
+                        <%=  empleados[i].dni %>
+                        </label>
+                        <br>
+                        <label><strong>Apel 1:</strong>
+                            <%=  empleados[i].apel1%>
+                        </label>
+                        <br>
+                        <label><strong>Apel 2:</strong>
+                            <%=  empleados[i].apel2 %>
+                        </label>
+                        <br>
+                        <label><strong>Cargo:</strong>
+                            <%=  empleados[i].cargo %>
+                        </label>
+                        <br>
+                        <label><strong>Pais:</strong>
+                            <%=  empleados[i].pais %>
+                        </label>
+                        <br>
+                        <label><strong>Ciudad:</strong>
+                            <%=  empleados[i].ciudad %>
+                        </label>
+                        <hr>
+                        <div class="botonera">
+                            <a class="btn btn-danger"
+                             style="width: 100%; box-shadow: 3px 3px 3px grey" 
+                             href="/delete/<%= empleados[i]._id %>">BORRAR</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <% }%>
+        </div>
+    </div>
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+
+</html>
